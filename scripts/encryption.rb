@@ -6,3 +6,8 @@
 # 1. encrypt a secret and puts encrypted string
 # 2. decrypt the encrypted string
 # 3. check if decrypted value matches secret
+
+secret = "tacos"
+encrypted_secret = BCrypt::Password.create(secret)
+
+puts encrypted_secret
