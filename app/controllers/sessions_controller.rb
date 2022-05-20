@@ -9,7 +9,7 @@ def create
     if @user 
     # Step 1a: if yes, check the password and go to step 2 
     # Step 2: check the password to see if it matches the user's password 
-    if @user["password"] == params["password"]
+    if BCrypt::Password.new(@user["password"]) == params["password"]
     # Step 2a: if yes, go to the companies page 
     flash["notice"] = "You're in!"
     redirect_to "/companies"
