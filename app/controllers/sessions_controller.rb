@@ -11,6 +11,7 @@ def create
     # Step 2: check the password to see if it matches the user's password 
     if BCrypt::Password.new(@user["password"]) == params["password"]
     # Step 2a: if yes, go to the companies page 
+    session["user_id"] = @user["id"]
     flash["notice"] = "You're in!"
     redirect_to "/companies"
     else
@@ -25,4 +26,10 @@ else
     end 
 end 
 
-end
+    def destroy 
+        flash["See ya later!"]
+        session["user_id"] = nil 
+        redirect_to "/sessions/new"
+    end 
+
+end 
